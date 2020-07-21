@@ -9,7 +9,7 @@ module.exports = {
       entry: "./client/index.js",
       output: {
             filename: "bundle.js",
-            path: path.resolve(process.cwd(), "public"),
+            path: path.resolve(process.cwd(), "build"),
       },
       module: {
             rules: rules,
