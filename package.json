@@ -1,0 +1,30 @@
+{
+      "name": "vk-parser",
+      "version": "1.0.0",
+      "main": "index.js",
+      "author": "vyun-d1488 <ilyaspiypiy@gmail.com>",
+      "license": "MIT",
+      "scripts": {
+            "server:dev": "nodemon --exec babel-node server/index.js",
+            "build:dev": "cross-env NODE_ENV=development webpack --config internals/webpack.client.js"
+      },
+      "devDependencies": {
+            "@babel/cli": "^7.10.5",
+            "@babel/core": "^7.10.5",
+            "@babel/node": "^7.10.5",
+            "@babel/preset-env": "^7.10.4",
+            "@babel/preset-react": "^7.10.4"
+      },
+      "dependencies": {
+            "copy-webpack-plugin": "^6.0.3",
+            "cross-env": "^7.0.2",
+            "css-loader": "^3.6.0",
+            "dotenv": "^8.2.0",
+            "express": "^4.17.1",
+            "progress-bar-webpack-plugin": "^2.1.0",
+            "react": "^16.13.1",
+            "react-dom": "^16.13.1",
+            "react-router-dom": "^5.2.0",
+            "rimraf": "^3.0.2"
+      }
+}
