@@ -115,7 +115,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-"1a1b2f852436f0eb80b6d172c59bc98875bab13ba3863d22078cfec294f7cf1de29a23817026d6516546e";
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Hello world"), document.getElementById("root"));
 
 /***/ }),
