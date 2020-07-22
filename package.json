@@ -33,6 +33,7 @@
             "react-dom": "^16.13.1",
             "react-router-dom": "^5.2.0",
             "request": "^2.88.2",
-            "rimraf": "^3.0.2"
+            "rimraf": "^3.0.2",
+            "vk-node-sdk": "^0.1.8"
       }
 }
