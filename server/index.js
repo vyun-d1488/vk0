@@ -1,30 +1,20 @@
 import express from "express";
+import nightmare from "./nightmare/parser";
 import "dotenv/config";
 
-const Nightmare = require("nightmare");
-const nightmare = Nightmare({
-      show: false,
+nightmare.then((result) => {
+      console.log("Done!");
+      let str_JSON = [];
+      for (let i = 0; i < result.length; i++) {
+            for (let k = 0; k < result[i].length; k++) {
+                  if (result[i][k] === "{") {
+                        str_JSON.push(result[i].substring(k, result[i].length));
+                  }
+            }
+      }
+      console.log(str_JSON);
 });
 
-nightmare
-      .goto("https://vk.com/eternalclassic")
-      .wait(2000)
-
-      .wait(2000)
-      .scrollTo(999999999999999999999999999, 0)
-      .wait(5000)
-      .evaluate(function () {
-            const page_post_thumb_wrap = document.getElementsByClassName(
-                  "page_post_thumb_wrap"
-            );
-            return document
-                  .getElementsByClassName("page_post_thumb_wrap")[0]
-                  .getAttribute("onclick");
-      })
-      .end()
-      .then(function (result) {
-            console.log(result);
-      });
 const PORT = process.env.PORT;
 const app = express();
 
