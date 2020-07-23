@@ -5,10 +5,12 @@ const nightmare = Nightmare({
 });
 
 nightmare
-      .goto("https://vk.com/eternalclassic")
+      .goto("https://vk.com/radicalmemers")
       .wait(2000)
       .scrollTo(999999999999999999999999999, 0)
-      .wait(5000)
+      .wait(2000)
+      .scrollTo(999999999999999999999999999, 0)
+      .wait(2000)
       .evaluate(function () {
             const elements = document.getElementsByClassName(
                   "page_post_thumb_wrap"

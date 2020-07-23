@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Root from "./components/Root";
 import "./index.css";
 
-ReactDOM.render(<p>Hello world</p>, document.getElementById("root"));
+ReactDOM.render(<Root />, document.getElementById("root"));
