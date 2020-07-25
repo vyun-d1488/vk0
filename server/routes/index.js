@@ -1,10 +1,12 @@
 import express from "express";
-import nightmare from "../nightmare/parser";
+import { run } from "../nightmare/parser";
 
 const router = express.Router();
 
 router.get("/get_img", (req, res) => {
+      const nightmare = run();
       nightmare.then((result) => {
+            console.log(result);
             let str_JSON = [];
             for (let i = 0; i < result.length; i++) {
                   str_JSON.push(
