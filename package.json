@@ -42,6 +42,7 @@
             "progress-bar-webpack-plugin": "^2.1.0",
             "react": "^16.13.1",
             "react-dom": "^16.13.1",
+            "react-infinite-scroll-component": "^5.0.5",
             "react-lazyload": "^3.0.0",
             "react-router-dom": "^5.2.0",
             "request": "^2.88.2",

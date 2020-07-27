@@ -5,16 +5,16 @@ const router = express.Router();
 
 router.get("/get_img", (req, res) => {
       const nightmare = run();
-      nightmare.then(async (result) => {
+      nightmare.then((result) => {
             let str_JSON = [];
             for (let i = 0; i < result.length; i++) {
                   try {
+                        const firstIndex = result[i].indexOf("{");
+                        const lastIndex = result[i].lastIndexOf("}") + 1;
+
                         str_JSON.push(
                               JSON.parse(
-                                    await result[i].substring(
-                                          result[i].indexOf("{"),
-                                          result[i].lastIndexOf("}") + 1
-                                    )
+                                    result[i].substring(firstIndex, lastIndex)
                               ).temp.x
                         );
                   } catch (e) {
@@ -22,6 +22,7 @@ router.get("/get_img", (req, res) => {
                   }
             }
             res.send(str_JSON);
+            res.end();
       });
 });
 

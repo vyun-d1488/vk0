@@ -1,35 +1,22 @@
 import React from "react";
-import LazyLoad from "react-lazyload";
-
-export const LoadingSpinner = () => {
-      return (
-            <div
-                  style={{
-                        margin: "200px auto",
-                        justifyContent: "center",
-                        textAlign: "center",
-                  }}
-            >
-                  <img
-                        src="https://i.gifer.com/g0R5.gif"
-                        style={{ width: "100px" }}
-                  ></img>
-            </div>
-      );
-};
 
 export const PictureRender = ({ pictures }) => {
       const loadedImages = pictures.map((picture, index) => {
             return (
-                  <img
-                        src={picture}
-                        ket={index}
+                  <div
                         style={{
-                              margin: "-2px",
-                              width: "auto",
-                              height: "auto",
+                              overflow: "hidden",
                         }}
-                  ></img>
+                  >
+                        <img
+                              src={picture}
+                              key={index}
+                              style={{
+                                    width: "200px",
+                                    height: "200px",
+                              }}
+                        ></img>
+                  </div>
             );
       });
       return (
@@ -39,6 +26,7 @@ export const PictureRender = ({ pictures }) => {
                         flexWrap: "wrap",
                         width: "200%",
                         height: "auto",
+                        overflow: "hidden",
                   }}
             >
                   {loadedImages}
