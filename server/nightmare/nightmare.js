@@ -1,5 +1,8 @@
 import Nightmare from "nightmare";
 
-export const nightmare = Nightmare({
-      show: true,
-}).goto("https://vk.com/radicalmemers");
+const nightmare = Nightmare({
+      show: false,
+});
+
+nightmare.goto("https://vk.com/radicalmemers");
+export { nightmare };

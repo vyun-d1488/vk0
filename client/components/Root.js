@@ -1,25 +1,66 @@
 import React from "react";
 import axios from "axios";
-import { PictureRender, LoadingSpinner } from "./PictureRender";
+import debounce from "lodash.debounce";
+import { PictureRender } from "./PictureRender";
 
 class Root extends React.Component {
       constructor(props) {
             super(props);
+
             this.state = {
-                  pics: [],
+                  error: false,
+                  hasMore: true,
+                  isLoading: false,
+                  pictures: [],
             };
       }
       componentDidMount() {
-            axios.get("/api/get_img").then((res) => {
-                  this.setState({ pics: res.data });
+            window.onscroll = debounce(() => {
+                  const {
+                        state: { error, isLoading, hasMore },
+                  } = this;
+
+                  if (error || isLoading || !hasMore) return;
+
+                  if (
+                        window.innerHeight +
+                              document.documentElement.scrollTop ===
+                        document.documentElement.offsetHeight
+                  ) {
+                        this.loadPictures();
+                  }
+            }, 100);
+            this.loadPictures();
+      }
+      loadPictures() {
+            this.setState({ isLoading: true }, () => {
+                  axios.get("/api/get_img").then((res) => {
+                        this.setState({
+                              hasMore: this.state.pictures.length < 100,
+                              isLoading: false,
+                              pictures: res.data,
+                        });
+                  });
             });
       }
-
       render() {
-            return this.state.pics.length === 0 ? (
-                  <LoadingSpinner />
-            ) : (
-                  <PictureRender images={this.state.pics} />
+            const { error, hasMore, isLoading, pictures } = this.state;
+            return (
+                  <div
+                        style={{
+                              position: "relative",
+                              overflow: "hidden",
+                              width: "100%",
+                        }}
+                  >
+                        {isLoading ? (
+                              <div>Loading...</div>
+                        ) : (
+                              <PictureRender pictures={pictures} />
+                        )}
+                        {!hasMore && <div>end</div>}
+                        {error && <div style={{ color: "#900" }}>{error}</div>}
+                  </div>
             );
       }
 }

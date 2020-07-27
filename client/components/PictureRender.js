@@ -18,28 +18,29 @@ export const LoadingSpinner = () => {
       );
 };
 
-export const PictureRender = ({ images }) => {
-      const loadedImages = images.map((image, index) => {
+export const PictureRender = ({ pictures }) => {
+      const loadedImages = pictures.map((picture, index) => {
             return (
-                  <LazyLoad
-                        key={index}
-                        height={100}
-                        offset={[-100, 100]}
-                        placeholder={<LoadingSpinner />}
-                  >
-                        <img
-                              src={image ? image.x : ""}
-                              style={{
-                                    maxWidth: "100%",
-                                    maxHeight: "100%",
-                                    display: "block",
-                              }}
-                        ></img>
-                  </LazyLoad>
+                  <img
+                        src={picture}
+                        ket={index}
+                        style={{
+                              margin: "-2px",
+                              width: "auto",
+                              height: "auto",
+                        }}
+                  ></img>
             );
       });
       return (
-            <div style={{ display: "flex", flexWrap: "wrap", width: "990px" }}>
+            <div
+                  style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        width: "200%",
+                        height: "auto",
+                  }}
+            >
                   {loadedImages}
             </div>
       );
