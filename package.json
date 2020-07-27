@@ -8,7 +8,7 @@
             "server:dev": "nodemon --exec babel-node server/index.js",
             "server:start": "node ./dist/index.js",
             "build:clean": "rimraf ./dist && rimraf ./build",
-            "build:babel": "yarn build:clean && rimraf ./build && babel -w server --out-dir dist/ --copy-files",
+            "build:babel": "babel server --out-dir dist/ --copy-files",
             "build:dev": "cross-env NODE_ENV=development webpack --config internals/webpack.client.js",
             "build:prod": "cross-env NODE_ENV=production webpack --config internals/webpack.client.js"
       },
