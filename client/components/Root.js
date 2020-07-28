@@ -11,9 +11,11 @@ class Root extends React.Component {
                   pictures: [],
             };
       }
+
       componentDidMount() {
             this.loadPictures();
       }
+
       loadPictures = () => {
             axios.get("/api/get_img").then((res) => {
                   this.setState({
@@ -24,7 +26,6 @@ class Root extends React.Component {
 
       render() {
             const { pictures } = this.state;
-            console.log(pictures.length);
             return (
                   <InfiniteScroll
                         dataLength={pictures.length}
