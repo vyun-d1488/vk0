@@ -1,29 +1,13 @@
-import express from "express";
-import { run } from "../nightmare/parser";
+import { Router } from "express";
+import { VKparser } from "@/service/vkparser";
 
-const router = express.Router();
+const router = Router();
+const parser = new VKparser();
 
 router.get("/get_img", (req, res) => {
-      const nightmare = run();
-      nightmare.then((result) => {
-            let str_JSON = [];
-            for (let i = 0; i < result.length; i++) {
-                  try {
-                        const firstIndex = result[i].indexOf("{");
-                        const lastIndex = result[i].lastIndexOf("}") + 1;
-
-                        str_JSON.push(
-                              JSON.parse(
-                                    result[i].substring(firstIndex, lastIndex)
-                              ).temp.x
-                        );
-                  } catch (e) {
-                        continue;
-                  }
-            }
-            res.send(str_JSON);
-            res.end();
-      });
+	parser.pictrureAttributes((pictures) => {
+		res.send(pictures);
+	});
 });
 
 module.exports = router;
